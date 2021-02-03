@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  libreoffice:
+    build: .
+    image: libreoffice
+    container_name: libreoffice
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - type: bind
+        source: ./documents
+        target: /home/office/Documents
+    environment:
+      DISPLAY: unix:0.0
+    network_mode: host
+    shm_size: "128mb"
